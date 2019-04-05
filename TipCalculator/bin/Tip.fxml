@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<GridPane hgap="10.0" vgap="6.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="TipController">
+  <columnConstraints>
+    <ColumnConstraints halignment="RIGHT" hgrow="SOMETIMES" maxWidth="58.0" minWidth="48.0" prefWidth="50.0" />
+      <ColumnConstraints hgrow="SOMETIMES" maxWidth="144.0" minWidth="134.0" prefWidth="142.0" />
+  </columnConstraints>
+  <rowConstraints>
+    <RowConstraints vgrow="SOMETIMES" />
+    <RowConstraints maxHeight="1.7976931348623157E308" vgrow="SOMETIMES" />
+    <RowConstraints vgrow="SOMETIMES" />
+      <RowConstraints vgrow="SOMETIMES" />
+      <RowConstraints vgrow="SOMETIMES" />
+  </rowConstraints>
+   <children>
+      <Button fx:id="calculateButton" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#calculateButtonPressed" text="Calculate" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+      <Slider fx:id="slider" blockIncrement="5.0" max="30.0" value="15.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+      <Label fx:id="amountLabel" text="Amount" />
+      <Label fx:id="sliderLabel" text="15%" GridPane.rowIndex="1" />
+      <Label fx:id="tipLabel" text="Tip" GridPane.rowIndex="2" />
+      <Label fx:id="totalLabel" text="Total" GridPane.rowIndex="3" />
+      <TextField fx:id="amountTextField" prefHeight="25.0" prefWidth="135.0" GridPane.columnIndex="1" />
+      <TextField fx:id="tipTextField" editable="false" focusTraversable="false" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+      <TextField fx:id="totalTextField" editable="false" focusTraversable="false" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+   </children>
+   <padding>
+      <Insets bottom="14.0" left="14.0" right="14.0" top="14.0" />
+   </padding>
+</GridPane>
