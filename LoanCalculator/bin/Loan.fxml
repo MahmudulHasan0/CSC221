@@ -85,5 +85,8 @@
             <Font name="Bookshelf Symbol 7" size="18.0" />
          </font>
       </Text>
+      <Label contentDisplay="RIGHT" layoutX="126.0" layoutY="75.0" text="\$" />
+      <Label layoutX="126.0" layoutY="113.0" text="\$" />
+      <Label layoutX="353.0" layoutY="160.0" />
    </children>
 </AnchorPane>

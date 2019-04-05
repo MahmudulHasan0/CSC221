@@ -57,32 +57,30 @@ public class LoanController{
     
     @FXML
     void calculateButtonPressed(ActionEvent event) {
-    	try {
+    	try 
+    	{
     		BigDecimal purchase = new BigDecimal(purchaseTextBox.getText()); 
     		BigDecimal downPayment = new BigDecimal(downTextBox.getText()); 
     		BigDecimal intrest = new BigDecimal(intrestTextBox.getText()); 
     		
     		// FORMULA: Using the loan payment calculation formula: monthly bill = A = P * r(1+r)^n / [(1+r)^n -1]
-    		// A = payment Amount per period       
-    		// P = initial Principal (loan amount)
-    		// r = interest rate per period            = yearly intrest / 12 months in a cycle
-			// n = total number of payments or periods = whatever years you taking the loan out for * 12 months in a cycle
+	    		// A = payment Amount per period       
+	    		// P = initial Principal (loan amount)
+	    		// r = interest rate per period            = yearly intrest / 12 months in a cycle
+				// n = total number of payments or periods = whatever years you taking the loan out for * 12 months in a cycle
     		BigDecimal P = purchase.subtract(downPayment);
     		BigDecimal r = intrest.divide(new BigDecimal(12)); 					//r = intrest yearly / 12 months 
     		BigDecimal n10 = (new BigDecimal(10)).multiply(new BigDecimal(12)); //n = 10 yrs * 12 months
     		BigDecimal n20 = (new BigDecimal(20)).multiply(new BigDecimal(12)); 
     		BigDecimal n30 = (new BigDecimal(30)).multiply(new BigDecimal(12));
+    		initialize(); //will now do the slider:
+    		BigDecimal nX = sliderDuration.multiply(new BigDecimal(12)); //X year loan /12 months = how many cycles
 
     		//TURNING BigDecimal to Double to make it easier to code the formula:
     		double monthly10 = (P.doubleValue()*r.doubleValue()*Math.pow((r.doubleValue()+1), n10.doubleValue()))/(Math.pow(r.doubleValue()+1, n10.doubleValue())-1);   
     		double monthly20 = (P.doubleValue()*r.doubleValue()*Math.pow((r.doubleValue()+1), n20.doubleValue()))/(Math.pow(r.doubleValue()+1, n20.doubleValue())-1);   
     		double monthly30 = (P.doubleValue()*r.doubleValue()*Math.pow((r.doubleValue()+1), n30.doubleValue()))/(Math.pow(r.doubleValue()+1, n30.doubleValue())-1);   
-    		
-    		//slider
-    		initialize();
-    		BigDecimal nX = sliderDuration.multiply(new BigDecimal(12)); //X year loan /12 months = how many cycles
     		double monthlyX = (P.doubleValue()*r.doubleValue()*Math.pow((r.doubleValue()+1), nX.doubleValue()))/(Math.pow(r.doubleValue()+1, nX.doubleValue())-1);
-    		
     		
     		System.out.println(monthly10);
     		System.out.println(monthly20);
@@ -93,7 +91,8 @@ public class LoanController{
     		loan30TextBox.setText(Double.toString(monthly30));
     		loanCustomTextBox.setText(Double.toString(monthlyX));
     	}
-    	catch(NumberFormatException ex){
+    	catch(NumberFormatException ex)
+    	{
     		purchaseTextBox.setText("Enter Purchase Amount");
     	    purchaseTextBox.selectAll();
     		purchaseTextBox.requestFocus();
@@ -108,11 +107,10 @@ public class LoanController{
     	}
     }
     
-    // called by FXMLLoader to initialize the controller
+    // Called by FXMLLoader to initialize the controller
     public void initialize() 
     {
-    	//0-4 round down. 5-9 round up
-    	currency.setRoundingMode(RoundingMode.HALF_UP);
+    	currency.setRoundingMode(RoundingMode.HALF_UP);//0-4 round down. 5-9 round up
     	//listen for changes to tipPercentageSlider's value
     	slider.valueProperty().addListener
     	(
@@ -123,22 +121,17 @@ public class LoanController{
 					sliderDuration = BigDecimal.valueOf(newValue.intValue());
 					System.out.println(sliderDuration);
 					sliderLabel.setText(sliderDuration.toString()+" Year Loan");
-		    		   
-
     			}  			 	
     		}
 		);
     }
 }
-    
-    
-    
-    
-    /* TEXTFIELDS (aTextField)
-     * 		GET INFO:  BigDecimal amount = new BigDecimal(aTextField.getText()); 
-     * 		SET: aTextField.setText("bla");	
-     * 
-     */
+
+/* TEXTFIELDS (aTextField)
+ * 		GET INFO:  BigDecimal amount = new BigDecimal(aTextField.getText()); 
+ * 		SET: aTextField.setText("bla");	
+ * 
+ */
     
     
     
